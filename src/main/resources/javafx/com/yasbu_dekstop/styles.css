@@ -1,0 +1,29 @@
+.anchor-pane {
+    -fx-background-color: linear-gradient(to bottom right, #4e54c8, #8f94fb);
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.text-field, .password-field {
+    -fx-background-radius: 5;
+    -fx-background-color: white;
+    -fx-padding: 5 10 5 10;
+    -fx-border-radius: 5;
+    -fx-border-color: #ddd;
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #6a5acd;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #836fff;
+}
