@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="javafx.com.yasbu_dekstop.controllers.LoginController"
+           styleClass="anchor-pane"
+           stylesheets="@styles.css">
 
-</AnchorPane>
+    <!-- Main Login Container - Center everything -->
+    <VBox alignment="CENTER" spacing="30" maxWidth="400" maxHeight="500">
+
+        <!-- Logo and Brand Section -->
+        <VBox spacing="10" alignment="CENTER">
+            <Label text="🌿" styleClass="icon-label" style="-fx-font-size: 50px;"/>
+            <Label text="YASBU" styleClass="title-label" style="-fx-font-size: 32px;"/>
+            <Label text="Desktop Application" styleClass="subtitle-label"/>
+        </VBox>
+
+        <!-- Login Card Container -->
+        <VBox styleClass="login-container" spacing="20" prefWidth="400">
+
+            <!-- Welcome Header -->
+            <VBox spacing="8" alignment="CENTER">
+                <Label text="Welcome Back" styleClass="title-label"/>
+                <Label text="Please sign in to your account" styleClass="subtitle-label"/>
+            </VBox>
+
+            <!-- Form Section -->
+            <VBox spacing="16">
+                <!-- Email Field -->
+                <VBox spacing="6">
+                    <Label text="Email Address" styleClass="form-label"/>
+                    <TextField fx:id="emailField"
+                               promptText="Enter your email address"
+                               styleClass="text-field"/>
+                </VBox>
+
+                <!-- Password Field -->
+                <VBox spacing="6">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Password" styleClass="form-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Forgot Password?" styleClass="link-label"
+                               onMouseClicked="#handleForgotPassword"/>
+                    </HBox>
+                    <PasswordField fx:id="passwordField"
+                                   promptText="Enter your password"
+                                   styleClass="password-field"/>
+                </VBox>
+            </VBox>
+
+            <!-- Error Message -->
+            <Label fx:id="errorLabel"
+                   text=""
+                   styleClass="error-label"
+                   wrapText="true"
+                   visible="true"
+                   style="-fx-text-fill: red;"/>
+
+
+            <!-- Login Button -->
+            <Button fx:id="loginButton" text="Sign In"
+                    onAction="#handleLogin"
+                    styleClass="login-button"
+                    maxWidth="Infinity"/>
+
+        </VBox>
+
+    </VBox>
+
+</StackPane>

@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="javafx.com.yasbu_dekstop.controllers.HomeController"
+            stylesheets="@styles.css">
 
-</AnchorPane>
+    <left>
+        <VBox styleClass="sidebar" spacing="15">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="sidebar-brand">
+                <padding>
+                    <Insets top="10" bottom="20" left="15" right="15"/>
+                </padding>
+                <StackPane styleClass="brand-icon-container">
+                    <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" styleClass="brand-icon-background"/>
+                    <SVGPath content="M15.5,12.5c0,1.93-1.57,3.5-3.5,3.5s-3.5-1.57-3.5-3.5c0-1.93,1.57-3.5,3.5-3.5S15.5,10.57,15.5,12.5z M12,4c-4.41,0-8,3.59-8,8s3.59,8,8,8 s8-3.59,8-8S16.41,4,12,4z M12,18c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S15.31,18,12,18z" styleClass="brand-icon-leaf"/>
+                </StackPane>
+                <Label text="DSS Analitik" styleClass="brand-title"/>
+            </HBox>
+
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Button fx:id="dashboardButton" text="Dashboard" styleClass="sidebar-button, active" alignment="BASELINE_LEFT">
+                    <graphic>
+                        <SVGPath content="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" styleClass="icon-svg"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="profileButton" text="Profil Pengguna" styleClass="sidebar-button" alignment="BASELINE_LEFT">
+                    <graphic>
+                        <SVGPath content="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" styleClass="icon-svg"/>
+                    </graphic>
+                </Button>
+                <Button fx:id="settingsButton" text="Pengaturan" styleClass="sidebar-button" alignment="BASELINE_LEFT">
+                    <graphic>
+                        <SVGPath content="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" styleClass="icon-svg"/>
+                    </graphic>
+                </Button>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="main-scroll" hbarPolicy="NEVER">
+            <GridPane hgap="25" vgap="25" styleClass="content-grid">
+                <padding>
+                    <Insets top="20" right="30" bottom="30" left="30"/>
+                </padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="60.0" hgrow="SOMETIMES"/>
+                    <ColumnConstraints percentWidth="40.0" hgrow="SOMETIMES"/>
+                </columnConstraints>
+
+                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label fx:id="mainWelcomeLabel" styleClass="welcome-title"/>
+                    <Label text="Berikut adalah ringkasan dukungan keputusan Anda." styleClass="welcome-subtitle"/>
+                </VBox>
+                <HBox spacing="15" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <VBox spacing="2" alignment="CENTER_RIGHT">
+                        <Label fx:id="welcomeLabel" styleClass="user-name"/>
+                        <Label text="Decision Maker" styleClass="user-role"/>
+                    </VBox>
+                    <Label fx:id="userInitials" styleClass="user-avatar"/>
+                </HBox>
+
+                <HBox spacing="15" alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2">
+                    <Button fx:id="newAnalysisButton" text="Jalankan Analisis Baru" styleClass="primary-action-button">
+                        <graphic>
+                            <SVGPath content="M8 5v14l11-7z" styleClass="icon-svg-light"/>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="loadRankingButton" text="Muat Peringkat" styleClass="secondary-action-button">
+                        <graphic>
+                            <SVGPath content="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" styleClass="icon-svg"/>
+                        </graphic>
+                    </Button>
+                    <Button text="Refresh Data" onAction="#handleDashboardClick" styleClass="secondary-action-button">
+                        <graphic>
+                            <SVGPath content="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" styleClass="icon-svg"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+
+                <VBox fx:id="mainDashboardCard" styleClass="dashboard-card" spacing="20" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <padding>
+                        <Insets top="25" bottom="25" left="25" right="25"/>
+                    </padding>
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Rekomendasi Teratas" styleClass="recommendation-badge"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <VBox alignment="CENTER_RIGHT" spacing="5">
+                            <Label text="VIKOR Q-Value" styleClass="metric-label"/>
+                            <Label fx:id="qValueLabel" styleClass="metric-value"/>
+                        </VBox>
+                    </HBox>
+                    <Separator style="-fx-background-color: rgba(255, 255, 255, 0.2);"/>
+                    <VBox spacing="15">
+                        <Label fx:id="productTitle" styleClass="product-title"/>
+                        <Label fx:id="productId" styleClass="product-id"/>
+                        <HBox spacing="15" styleClass="metrics-container">
+                            <VBox styleClass="metric-box" spacing="8" HBox.hgrow="ALWAYS">
+                                <Label text="S-VALUE (GROUP UTILITY)" styleClass="metric-header"/>
+                                <Label fx:id="sValueLabel" styleClass="metric-number"/>
+                            </VBox>
+                            <VBox styleClass="metric-box" spacing="8" HBox.hgrow="ALWAYS">
+                                <Label text="R-VALUE (INDIVIDUAL REGRET)" styleClass="metric-header"/>
+                                <Label fx:id="rValueLabel" styleClass="metric-number"/>
+                            </VBox>
+                        </HBox>
+                        <Label text="Nilai Q yang lebih rendah mengindikasikan alternatif yang lebih baik." styleClass="info-text"/>
+                    </VBox>
+                    <HBox alignment="CENTER" spacing="10">
+                        <ProgressIndicator fx:id="loadingIndicator" prefWidth="25" prefHeight="25" visible="false"/>
+                        <Label fx:id="loadingLabel" visible="false" styleClass="loading-text"/>
+                    </HBox>
+                </VBox>
+                <VBox styleClass="chart-card" spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <padding>
+                        <Insets top="25" bottom="25" left="25" right="25"/>
+                    </padding>
+                    <VBox spacing="5">
+                        <Label text="Perbandingan Peringkat" styleClass="chart-title"/>
+                        <Label text="Visualisasi skor Q untuk alternatif teratas." styleClass="chart-subtitle"/>
+                    </VBox>
+                    <VBox fx:id="chartData" spacing="15" styleClass="chart-data"/>
+                </VBox>
+
+                <VBox styleClass="chart-card" spacing="15" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                    <padding>
+                        <Insets top="25" bottom="25" left="25" right="25"/>
+                    </padding>
+                    <Label text="Peringkat Detail VIKOR:" styleClass="chart-title"/>
+                    <HBox fx:id="vikorDetailHeader" alignment="CENTER_LEFT" styleClass="detail-table-header" spacing="15"/>
+                    <VBox fx:id="vikorDetailTable" spacing="8" styleClass="detail-table-content"/>
+                </VBox>
+
+                <VBox spacing="10" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                    <Separator/>
+                    <HBox styleClass="status-bar" spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Status:" styleClass="status-label"/>
+                        <Label fx:id="statusLabel" text="Siap" styleClass="status-value"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lastUpdatedLabel" text="Terakhir diperbarui: -" styleClass="last-updated"/>
+                    </HBox>
+                </VBox>
+
+            </GridPane>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
